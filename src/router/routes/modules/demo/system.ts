@@ -64,6 +64,24 @@ const system: AppRouteModule = {
       component: () => import('/@/views/demo/system/dept/index.vue'),
     },
     {
+      path: 'dictionary',
+      name: 'DictionaryManagement',
+      meta: {
+        title: t('routes.demo.system.dictionary'),
+        ignoreKeepAlive: true,
+      },
+      component: () => import('/@/views/demo/system/dictionary/index.vue'),
+    },
+    {
+      path: 'configure',
+      name: 'ConfigureManagement',
+      meta: {
+        title: t('routes.demo.system.configure'),
+        ignoreKeepAlive: false,
+      },
+      component: () => import('/@/views/demo/system/configure/index.vue'),
+    },
+    {
       path: 'changePassword',
       name: 'ChangePassword',
       meta: {

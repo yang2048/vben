@@ -47,6 +47,7 @@
                 size="small"
                 :pageSize="pageSize"
                 :total="getTotal"
+                :page-size-options="[pageSize]"
                 @change="handlePageChange"
               />
             </div>
@@ -106,7 +107,7 @@
   const props = defineProps({
     value: propTypes.string,
     width: propTypes.string.def('100%'),
-    pageSize: propTypes.number.def(140),
+    pageSize: propTypes.number.def(100),
     copy: propTypes.bool.def(false),
     mode: propTypes.oneOf<('svg' | 'iconify')[]>(['svg', 'iconify']).def('iconify'),
   });

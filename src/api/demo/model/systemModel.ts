@@ -60,6 +60,28 @@ export interface RoleListItem {
   createTime: string;
 }
 
+export interface ConfigureListItem {
+  id: string;
+  configName: string;
+  configKey: string;
+  configValue: string;
+  configType: string;
+  remark: string;
+  disable: number;
+  created: string;
+}
+
+export interface DictionaryListItem {
+  id: string;
+  dictName: string;
+  dictKey: string;
+  dictValue: string;
+  dictType: string;
+  remark: string;
+  disable: number;
+  created: string;
+}
+
 /**
  * @description: Request list return value
  */
@@ -72,3 +94,7 @@ export type MenuListGetResultModel = BasicFetchResult<MenuListItem>;
 export type RolePageListGetResultModel = BasicFetchResult<RoleListItem>;
 
 export type RoleListGetResultModel = RoleListItem[];
+
+export type ConfigureListGetResultModel = BasicFetchResult<ConfigureListItem>;
+
+export type DictionaryListGetResultModel = BasicFetchResult<DictionaryListItem>;

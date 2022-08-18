@@ -35,6 +35,40 @@ const roleList = (() => {
   return result;
 })();
 
+const configurePageList = (() => {
+  const result: any[] = [];
+  for (let index = 0; index < 12; index++) {
+    result.push({
+      id: index + 1,
+      configName: '@cword(5,10)',
+      configKey: '@first',
+      configValue: '@first',
+      'configType|1': ['0', '1'],
+      'disable|1': ['0', '1'],
+      remark: '@cword(10,20)',
+      created: '@datetime',
+    });
+  }
+  return result;
+})();
+
+const dictionaryPageList = (() => {
+  const result: any[] = [];
+  for (let index = 0; index < 12; index++) {
+    result.push({
+      id: index + 1,
+      dictName: '@cword(5,10)',
+      dictKey: '@first',
+      dictValue: '@first',
+      'dictType|1': ['0', '1'],
+      'disable|1': ['0', '1'],
+      remark: '@cword(10,20)',
+      created: '@datetime',
+    });
+  }
+  return result;
+})();
+
 const deptList = (() => {
   const result: any[] = [];
   for (let index = 0; index < 3; index++) {
@@ -56,7 +90,22 @@ const deptList = (() => {
             remark: '@cword(10,20)',
             'status|1': ['0', '1'],
             parentDept: `${index}`,
-            children: undefined,
+            children: (() => {
+              const children: any[] = [];
+              for (let j = 0; j < 3; j++) {
+                children.push({
+                  id: `${index}-${j}`,
+                  deptName: ['壹部', '贰部', '叁部'][j],
+                  orderNo: j + 1,
+                  createTime: '@datetime',
+                  remark: '@cword(10,20)',
+                  'status|0': ['0', '1'],
+                  parentDept: `${index}`,
+                  children: undefined,
+                });
+              }
+              return children;
+            })(),
           });
         }
         return children;
@@ -168,6 +217,22 @@ export default [
     method: 'get',
     response: () => {
       return resultSuccess(roleList);
+    },
+  },
+  {
+    url: '/basic-api/system/getConfigureListByPage',
+    timeout: 100,
+    method: 'get',
+    response: () => {
+      return resultSuccess(configurePageList);
+    },
+  },
+  {
+    url: '/basic-api/system/getDictionaryListByPage',
+    timeout: 100,
+    method: 'get',
+    response: () => {
+      return resultSuccess(dictionaryPageList);
     },
   },
   {
