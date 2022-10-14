@@ -3,8 +3,8 @@ name: schedule-push-to-ftp
 # Timed deployment project
 on:
   push:
-  schedule:
-    - cron: '0 20 * * *'
+#  schedule:
+#    - cron: '0 20 * * *'
 
 jobs:
   schedule-push-to-ftp:
